@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import styled from 'styled-components';
+import theme from './theme/index.js';
 import axios from 'axios';
 import Header from './header.js';
 import Body from './MainBody.js';
@@ -7,7 +9,9 @@ import "./App.css";
 function App() {
 
   const [picOfTheDayObject, setPicOfTheDayObject] = useState({});
-
+  const StyledApp = styled.div`
+    background-color: ${props => props.theme.lightColor};
+  `
   useEffect(() => {
     axios.get('https://api.nasa.gov/planetary/apod?api_key=mraGUz3hQOi2ODXYXbWdcBO85ahB3fnhc80XCVo1')
       .then(response => {
@@ -18,10 +22,10 @@ function App() {
     },[]);
 
   return (
-    <div className="App">
+    <StyledApp theme = {theme}>
       <Header date = {picOfTheDayObject.date} />
-      <Body title = {picOfTheDayObject.title} picOfTheDay = {picOfTheDayObject.hdurl} learnMoreParagraph = {picOfTheDayObject.explanation} />
-    </div>
+      <Body title = {picOfTheDayObject.title} picOfTheDay = {picOfTheDayObject.hdurl} learnMoreParagraph = {picOfTheDayObject.explanation} author = {picOfTheDayObject.copyright} />
+    </StyledApp>
   );
 }
 
