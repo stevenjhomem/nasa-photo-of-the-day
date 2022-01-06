@@ -15,7 +15,7 @@ function Header(props) {
     `
     return (
         <StyledHeader theme = {theme}>
-            <img className ='NASA Logo' src = 'https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg'/>
+            <img className ='NASA Logo' src = 'https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg' alt = 'something goes here' />
             <div className = 'Date'>{date}</div>
         </StyledHeader>
     )};
